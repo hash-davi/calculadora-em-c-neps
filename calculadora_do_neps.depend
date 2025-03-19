@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1742426862 source:c:\users\davii\onedrive\documentos\programas\c\calculadora_do_neps\src\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<ctype.h>
+

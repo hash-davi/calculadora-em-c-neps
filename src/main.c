@@ -24,8 +24,15 @@ int main(){
 void mainMenu() {
     printf ("===============================\n"
             "   Calculadora Simples\n"
-            "===============================\n"
-            "Selecione uma operação:\n"
+            "===============================\n");
+
+
+    operationChoice();
+}
+
+void operationChoice() {
+    int operation;
+    printf("Selecione uma operação:\n"
             "1. Adição\n"
             "2. Subtração\n"
             "3. Multiplicação\n"
@@ -34,13 +41,6 @@ void mainMenu() {
             "Opção:"
             );
 
-    operationChoice();
-}
-
-void operationChoice() {
-    int operation;
-
-    choice:
     scanf("%d", &operation);
 
     switch(operation){
@@ -61,7 +61,7 @@ void operationChoice() {
             break;
         default:
             printf("Você digitou uma opção inválida!\nPor favor, tente novamente.\n");
-            goto choice;
+            operationChoice();
             break;
     }
 
@@ -121,7 +121,7 @@ void divide() {
 
     if (number2 == 0) {
         printf("Erro: Divisão por zero não é permitida.\n");
-        mainMenu();
+        operationChoice();
     }
 
     double resultado = number1 / number2;
@@ -132,8 +132,10 @@ void divide() {
 void anotherOperation() {
     char choice;
 
+    while((choice = getchar()) != '\n' && choice != EOF);
+
     printf("Deseja realizar outra operação? (s/n):");
-    scanf("%c", &choice);
+    choice = getchar();
 
     switch(tolower(choice)) {
         case 's':
